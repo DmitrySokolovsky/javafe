@@ -2,13 +2,23 @@ import React from 'react';
 import { data } from './data';
 import './css/list.css';
 import { Link } from 'react-router-dom';
+import { ListItem } from './list_item';
+import axios from 'axios';
 
-export class List extends React.Component {
+class List extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             dogsData: data
         };
+
+        this.setState({
+            data: responce
+        });
+    }
+
+    componentDidMount() {
+        
     }
 
     render() {
@@ -16,13 +26,9 @@ export class List extends React.Component {
             <div>
                 <ul>
                 { 
-                    this.props.data.map((item, index) => {
+                    this.props.data.map((item) => {
                         return (
-                            <li className="list-item" key={index}>
-                                <p className="list-item-name label">Name: </p>
-                                <p className="list-item-name value">{item.name}</p>
-                                <p className="link"><Link to={`/details/${item.name}`}>Show more...</Link></p>
-                            </li>
+                            <ListItem name={item}/>
                         );
                     })
                 }
@@ -31,3 +37,5 @@ export class List extends React.Component {
         );
     }
 }
+
+export default List;

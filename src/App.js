@@ -6,6 +6,7 @@ import { Home } from './components/Home.component';
 import { List } from './components/List.component';
 import { Details } from './components/Details.component';
 import { data } from './components/data';
+import { Contact } from './components/contact';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
             <Route exact path='/' component={Home}/>
             <Route path='/list' render={props => (<List data={data}/>)}/>
             <Route path='/details/:name' render={ props => (<Details data={data}{...props} />)} />
+            <Route path='/contact/:name' component={Contact} />
         </Switch>
       </div>
     );
